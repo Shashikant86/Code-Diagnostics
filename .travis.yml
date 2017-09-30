@@ -1,0 +1,9 @@
+language: objective-c
+osx_image: xcode9
+
+install: true
+script:
+  - echo "Enabling Address Sanitizer to detect"
+  - xcodebuild test -scheme Code-Diagnostics -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.0' -enableAddressSanitizer YES
+  - echo "Enabling Thread Sanitizer, Main Thread Checker and undefined behavior sanitizer"
+  - xcodebuild test -scheme Code-Diagnostics -destination 'platform=iOS Simulator,name=iPhone 6,OS=11.0' -enableThreadSanitizer YES -enableUndefinedBehaviorSanitizer YES
